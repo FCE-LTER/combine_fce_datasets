@@ -25,21 +25,23 @@ packages_updated <- fce_package_list %>%
 
 
 
-# For each row in fce_package_list, get the associated data entityID and entityName 
+# For each row in packages_updated, get the associated data entityID and entityName 
 results_df <- map_dfr(packages_updated$full_package_id, function(pkg_id) {
   read_data_entity_names(pkg_id) %>%
     mutate(full_package_id = pkg_id)   # keep track of source package
 })
 
-# For each package, get the entity names
-results_list <- lapply(fce_package_list$full_package_id, read_data_entity_names)
+# For each updated package, get the entity names
+results_list <- lapply(packages_updated$full_package_id, read_data_entity_names)
 
 results_list_df <- as.data.frame(results_list)
 
 entity_names_df <- map_dfr(fce_package_list$full_package_id, function(entity_names) {
   read_data_entity_names(entity_names) %>%
     mutate(full_package_id = entity_names)   # add the package id
-})
+}) %>%
+  # filter full_package_id against packages_updated
+  filter(full_package_id %in% packages_updated$full_package_id)
 
 
 # Loop through each package + entityName and read the raw data
@@ -49,7 +51,6 @@ raw_data_list <- pmap(
     read_data_entity(pkg_id, entity)
   }
 )
-
 
 
 # Name the list by package + entityName so you can track them
