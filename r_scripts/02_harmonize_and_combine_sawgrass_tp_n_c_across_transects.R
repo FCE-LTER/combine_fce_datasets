@@ -3,8 +3,25 @@ library(tidyverse)
 library(plotly)
 
 # Load the raw data files
-SRS_N_C_raw <- read_csv("data/raw/LT_ND_Grahl_004.csv")
-SRS_P_raw <- read_csv("data/raw/LT_ND_Grahl_005.csv")
+SRS_saw_biomass <- read_csv("data/raw/LT_PP_Grahl_001.csv")
+SRS_N_C_raw <- read_csv("data/raw/LT_ND_Grahl_004.csv") %>%
+  # mutate values in the Type column from "Above" and "Below"
+  # to Aboveground and Belowground using case_when
+  mutate(Type = case_when(
+    Type == "Above" ~ "Aboveground",
+    Type == "Below" ~ "Belowground",
+    TRUE ~ Type
+  ))
+
+SRS_P_raw <- read_csv("data/raw/LT_ND_Grahl_005.csv") %>%
+# mutate values in the Type column from "Above" and "Below"
+# to Aboveground and Belowground using case_when
+mutate(Type = case_when(
+  Type == "Above" ~ "Aboveground",
+  Type == "Below" ~ "Belowground",
+  TRUE ~ Type
+))
+
 TS_P_raw <- read_csv("data/raw/LT_ND_Rubio_004.csv")
 TS_N_C_raw <- read_csv("data/raw/LT_ND_Rubio_005.csv")
 
