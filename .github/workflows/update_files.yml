@@ -25,6 +25,7 @@ jobs:
         with:
           packages: |
             any::readr 
+            any::dplyr
             any::EDIutils
             any::purrr
       
