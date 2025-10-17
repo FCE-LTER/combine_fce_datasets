@@ -21,7 +21,10 @@ all_res_with_main_id <- all_res %>%
 
 # Get list of packages fce_package_list that have been updated in EDI
 packages_updated <- fce_package_list %>%
-  filter(!(full_package_id %in% all_res$packageid))
+  filter(!(last_local_rev_full_package_id %in% all_res$packageid)) %>%
+  inner_join(all_res_with_main_id,
+             by ="package") %>%
+  rename(new_rev_package_id = packageid)
 
 
 
@@ -32,21 +35,19 @@ results_df <- map_dfr(packages_updated$full_package_id, function(pkg_id) {
 })
 
 # For each updated package, get the entity names
-results_list <- lapply(packages_updated$full_package_id, read_data_entity_names)
+results_list <- lapply(packages_updated$new_rev_package_id, read_data_entity_names)
 
 results_list_df <- as.data.frame(results_list)
 
-entity_names_df <- map_dfr(fce_package_list$full_package_id, function(entity_names) {
+entity_names_df <- map_dfr(packages_updated$new_rev_package_id, function(entity_names) {
   read_data_entity_names(entity_names) %>%
-    mutate(full_package_id = entity_names)   # add the package id
-}) %>%
-  # filter full_package_id against packages_updated
-  filter(full_package_id %in% packages_updated$full_package_id)
+    mutate(new_rev_package_id = entity_names)   # add the package id
+})
 
 
 # Loop through each package + entityName and read the raw data
 raw_data_list <- pmap(
-  list(entity_names_df$full_package_id, entity_names_df$entityId),
+  list(entity_names_df$new_rev_package_id, entity_names_df$entityId),
   function(pkg_id, entity) {
     read_data_entity(pkg_id, entity)
   }
