@@ -27,7 +27,7 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2 # automatically sets up cache
         with:
           packages: |
-            any::tidyverse 
+            any::readr 
             any::EDIutils
             any::tools
             any::purr
