@@ -40,8 +40,5 @@ jobs:
           command: Rscript -e 'source("r_scripts/01_check_and_download_looped.R")'
           continue_on_error: true
         
-      - uses: actions/checkout@v5
-        with:
-          ref: ${{ github.head_ref }}
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v7
