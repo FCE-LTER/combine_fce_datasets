@@ -9,7 +9,7 @@ jobs:
   render:
     name: Download data
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push the
@@ -26,8 +26,7 @@ jobs:
           packages: |
             any::readr 
             any::EDIutils
-            any::tools
-            any::purr
+            any::purrr
       
       - name: Check out repository
         uses: actions/checkout@v4
