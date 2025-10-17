@@ -1,7 +1,7 @@
 # Load libraries
 library(readr)
 library(EDIutils)
-library(tools)
+#library(tools)
 library(dplyr)
 library(purrr)
 
@@ -55,8 +55,8 @@ raw_data_list <- pmap(
 
 # Name the list by package + entityName so you can track them
 names(raw_data_list) <- paste(entity_names_df$entityName, sep = "_") %>%
-  #Remove ".csv" if present for consistency. We will add it back later
-  file_path_sans_ext()
+  #Remove file extension  in name if present for consistency. We will add it back later
+  sub(pattern = "(.*)\\..*$", replacement = "\\1", .)
 
 #Read each raw data element into a data frame
 raw_data_frames <- map(raw_data_list, ~ read_csv(file = .x, col_types = cols(.default = col_character())))
