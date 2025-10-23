@@ -1,7 +1,6 @@
 # Load libraries
 library(readr)
 library(EDIutils)
-#library(tools)
 library(dplyr)
 library(purrr)
 
@@ -21,7 +20,7 @@ all_res_with_main_id <- all_res %>%
 
 # Get list of packages fce_package_list that have been updated in EDI
 packages_updated <- fce_package_list %>%
-  filter(!(last_local_rev_full_package_id %in% all_res$packageid)) %>%
+  filter(!(current_local_rev_full_package_id %in% all_res$packageid)) %>%
   inner_join(all_res_with_main_id,
              by ="package") %>%
   rename(new_rev_package_id = packageid)
@@ -29,7 +28,7 @@ packages_updated <- fce_package_list %>%
 
 
 # For each row in packages_updated, get the associated data entityID and entityName 
-results_df <- map_dfr(packages_updated$full_package_id, function(pkg_id) {
+results_df <- map_dfr(packages_updated$new_rev_package_id, function(pkg_id) {
   read_data_entity_names(pkg_id) %>%
     mutate(full_package_id = pkg_id)   # keep track of source package
 })
@@ -83,11 +82,28 @@ for (i in seq_along(raw_data_frames)) {
 fce_package_list_updated <- fce_package_list %>%
   left_join(all_res_with_main_id,
             by = c("package" = "package")) %>%
-  mutate(full_package_id = packageid) %>%
+  mutate(current_local_rev_full_package_id = packageid,
+         current_local_doi = doi) %>%
   select(package,
-         full_package_id)
+         current_local_rev_full_package_id,
+         current_local_doi)
 
-# Write fce_package_list_updated to file, replacing package_list.csv
+
+# Get the updated citations, and output them into a tibble.
+fce_citations_df <- map_dfr(
+  fce_package_list_updated$current_local_rev_full_package_id,
+  ~ tibble(
+    local_fce_citation = read_data_package_citation(.x),
+    current_local_rev_full_package_id = .x
+  )
+)
+
+
+# Write fce_package_list_updated to file,
+# replacing last version of package_list.csv
 write_csv(fce_package_list_updated,
           "data/raw/package_list.csv")
 
+# Write the updated citations to file
+write_csv(fce_citations_df,
+          "data/raw/fce_local_citations.csv")

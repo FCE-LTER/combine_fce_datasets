@@ -1,6 +1,6 @@
-package,full_package_id
-knb-lter-fce.1070,knb-lter-fce.1070.14
-knb-lter-fce.1071,knb-lter-fce.1071.16
-knb-lter-fce.1082,knb-lter-fce.1082.14
-knb-lter-fce.1083,knb-lter-fce.1083.11
-knb-lter-fce.1084,knb-lter-fce.1084.13
+package,current_local_rev_full_package_id,current_local_doi
+knb-lter-fce.1070,knb-lter-fce.1070.14,doi:10.6073/pasta/332e0639eda374cb620fb46220c7a97a
+knb-lter-fce.1071,knb-lter-fce.1071.16,doi:10.6073/pasta/8ddb405a5bdd8677fab72f3c5b2795b7
+knb-lter-fce.1082,knb-lter-fce.1082.14,doi:10.6073/pasta/d9e8079406c40922379dec0a9929e831
+knb-lter-fce.1083,knb-lter-fce.1083.11,doi:10.6073/pasta/f378144d8752481934bfc6610bd2bfc6
+knb-lter-fce.1084,knb-lter-fce.1084.13,doi:10.6073/pasta/63c0ce1fa1d09c10ff306b459cff7822
