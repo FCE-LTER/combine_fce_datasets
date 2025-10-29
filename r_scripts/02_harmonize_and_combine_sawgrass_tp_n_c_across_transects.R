@@ -177,6 +177,12 @@ sawgrass_n_c_plot_grouped <- sawgrass_n_c_all_sites %>%
 
 interactive_n_c_plot <- ggplotly(sawgrass_n_c_plot_grouped)
 
+# Create "plots" folder if it doesn't already exist
+if (!dir.exists("plots")) {
+  dir.create("plots")
+}
+
+
 # Write interactive plots to /plots folder as html files
 htmlwidgets::saveWidget(interactive_tp_plot, "plots/sawgrass_tp_across_transects.html")
 htmlwidgets::saveWidget(interactive_n_plot, "plots/sawgrass_n_across_transects.html")
