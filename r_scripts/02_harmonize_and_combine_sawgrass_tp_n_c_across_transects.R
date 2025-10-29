@@ -171,8 +171,11 @@ sawgrass_n_c_plot_grouped <- sawgrass_n_c_all_sites %>%
   labs(title = "Sawgrass N Across Transects (Grouped by Site and Type)",
        x = "Date",
        y = "N (mg/g)") +
-  facet_wrap(~Type) +
+  #facet_wrap(~Type) +
   theme_minimal()
 
 interactive_n_c_plot <- ggplotly(sawgrass_n_c_plot_grouped)
 
+# Write interactive plots to /plots folder as html files
+htmlwidgets::saveWidget(interactive_tp_plot, "plots/sawgrass_tp_across_transects.html")
+htmlwidgets::saveWidget(interactive_n_plot, "plots/sawgrass_n_across_transects.html")
