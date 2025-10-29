@@ -6,8 +6,7 @@ on:
 name: Check EDI data
 
 jobs:
-  render:
-    name: Download data
+  download-data-and-plot:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     
@@ -34,21 +33,11 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
       
-      - name: Retrieve data
-        uses: nick-fields/retry@v3
-        with:
-          timeout_seconds: 30
-          max_attempts: 3
-          command: Rscript -e 'source("r_scripts/01_check_and_download_looped.R")'
-          continue_on_error: false
+      - name: Retrieve data from EDI
+        run: Rscript -e 'source("r_scripts/01_check_and_download_looped.R")'
       
-      - name: Create interactive plots
-        uses: nick-fields/retry@v3
-        with:
-          timeout_seconds: 30
-          max_attempts: 3
-          command: Rscript -e 'source("r_scripts/02_harmonize_and_combine_sawgrass_tp_n_c_across_transects.R")'
-          continue_on_error: false
+      - name: Combine and plot
+        run: Rscript -e 'source("r_scripts/02_harmonize_and_combine_sawgrass_tp_n_c_across_transects.R")'
       
       # Commit all changed files back to the repository
       - uses: stefanzweifel/git-auto-commit-action@v7
