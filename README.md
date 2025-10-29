@@ -12,7 +12,7 @@ This repository project is under development to automatically do the following v
 2. Download data files from packages that have a more recent version in EDI than in the local list (step currently working).
 3. Update local package list with latest package versions after new data are downloaded (step currently working).
 4. Update local data package citation list with most recent citations (step currently working).
-5. Combine multiple datasets into signature datasest and generate interactive plots as html files (step currently working).
+5. Combine multiple datasets and generate interactive plots as html files (step currently working).
 6. Publish GitHub Page to host interactive plots (step currently working).
 
 This project was inspired by:
