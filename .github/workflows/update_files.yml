@@ -9,7 +9,7 @@ jobs:
   render:
     name: Download data
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     
     permissions:
       # Give the default GITHUB_TOKEN write permission to commit and push the
