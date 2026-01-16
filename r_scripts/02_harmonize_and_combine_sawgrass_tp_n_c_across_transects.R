@@ -109,7 +109,8 @@ all_sites_all_nutrients <- rbind(srs_all_nutrients,
 # Average the TP values by site, date, and type
 sawgrass_tp_all_sites_avg <- sawgrass_tp_all_sites %>%
   group_by(SITENAME, Date, Type) %>%
-  summarise(`mean_ugP/g` = mean(`ugP/g`, na.rm = TRUE), .groups = 'drop')
+  summarise(`mean_ugP/g` = mean(`ugP/g`, na.rm = TRUE), .groups = 'drop') %>%
+  mutate(`mean_ugP/g` = round(`mean_ugP/g`, 3))
 
 # Assign habitat types to sites
 habitats <- sawgrass_tp_all_sites %>%
@@ -143,7 +144,8 @@ sawgrass_tp_by_habitat <- sawgrass_tp_all_sites %>%
   summarise(`mean_ugP/g` = mean(`ugP/g`, na.rm = TRUE), .groups = 'drop') %>%
   mutate(Transect_Habitat_Type = paste(Transect_Habitat,
                                        Type,
-                                       sep = "_"))
+                                       sep = "_"),
+         `mean_ugP/g` = round(`mean_ugP/g`, 3))
 
 
   
@@ -151,7 +153,8 @@ sawgrass_tp_by_habitat <- sawgrass_tp_all_sites %>%
 sawgrass_tn_all_sites_avg <- sawgrass_n_c_all_sites %>%
   # Average the TN values by site, date, and type
   group_by(SITENAME, Date, Type) %>%
-  summarise(`mean_mgN/g` = mean(`mgN/g`, na.rm = TRUE), .groups = 'drop')
+  summarise(`mean_mgN/g` = mean(`mgN/g`, na.rm = TRUE), .groups = 'drop') %>%
+  mutate(`mean_mgN/g` = round(`mean_mgN/g`, 2))
 
 sawgrass_tn_by_habitat <- sawgrass_n_c_all_sites %>%
   left_join(.,
@@ -161,13 +164,15 @@ sawgrass_tn_by_habitat <- sawgrass_n_c_all_sites %>%
   summarise(`mean_mgN/g` = mean(`mgN/g`, na.rm = TRUE), .groups = 'drop') %>%
   mutate(Transect_Habitat_Type = paste(Transect_Habitat,
                                        Type,
-                                       sep = "_"))
+                                       sep = "_"),
+         `mean_mgN/g` = round(`mean_mgN/g`, 3))
 
 
 sawgrass_tc_all_sites_avg <- sawgrass_n_c_all_sites %>%
   # Average the TN values by site, date, and type
   group_by(SITENAME, Date, Type) %>%
-  summarise(`mean_mgC/g` = mean(`mgC/g`, na.rm = TRUE), .groups = 'drop')
+  summarise(`mean_mgC/g` = mean(`mgC/g`, na.rm = TRUE), .groups = 'drop') %>%
+  mutate(`mean_mgC/g` = round(`mean_mgC/g`, 2))
 
 sawgrass_tc_by_habitat <- sawgrass_n_c_all_sites %>%
   left_join(.,
@@ -177,7 +182,8 @@ sawgrass_tc_by_habitat <- sawgrass_n_c_all_sites %>%
   summarise(`mean_mgC/g` = mean(`mgC/g`, na.rm = TRUE), .groups = 'drop') %>%
   mutate(Transect_Habitat_Type = paste(Transect_Habitat,
                                        Type,
-                                       sep = "_"))
+                                       sep = "_"),
+         `mean_mgC/g` = round(`mean_mgC/g`, 2))
 
 sawgrass_all_sites_nutrient_avg_output <- sawgrass_tc_all_sites_avg %>%
   inner_join(.,
