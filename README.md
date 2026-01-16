@@ -17,4 +17,5 @@ This repository project is under development to automatically do the following v
 
 This project was inspired by:
 - [Online Book: A Synthesis of Scientific Research at Hubbard Brook](https://hubbardbrook.org/online-book/)
+- [Luquillo LTER signature Monthly and Daily dataset](https://portal.edirepository.org/nis/mapbrowse?scope=knb-lter-luq&identifier=236&revision=18)
 
