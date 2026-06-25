@@ -61,10 +61,10 @@ TS_Ecotone,2004-04-01,Aboveground,TS_Ecotone_Aboveground,8.09,8.087,271.573
 TS_Ecotone,2004-04-01,Belowground,TS_Ecotone_Belowground,5.58,5.582,204.566
 TS_Ecotone,2005-04-01,Aboveground,TS_Ecotone_Aboveground,8,7.997,219.333
 TS_Ecotone,2005-04-01,Belowground,TS_Ecotone_Belowground,5.96,5.964,195
-TS_Ecotone,2006-03-01,Aboveground,TS_Ecotone_Aboveground,8.36,8.363,219.167
-TS_Ecotone,2006-03-01,Belowground,TS_Ecotone_Belowground,5.6,5.6,250.5
-TS_Ecotone,2006-04-01,Aboveground,TS_Ecotone_Aboveground,8.53,8.53,227
-TS_Ecotone,2006-04-01,Belowground,TS_Ecotone_Belowground,6.35,6.347,207.333
+TS_Ecotone,2006-03-01,Aboveground,TS_Ecotone_Aboveground,7.34,7.343,236
+TS_Ecotone,2006-03-01,Belowground,TS_Ecotone_Belowground,5.95,5.953,382.333
+TS_Ecotone,2006-04-01,Aboveground,TS_Ecotone_Aboveground,8.96,8.957,214.667
+TS_Ecotone,2006-04-01,Belowground,TS_Ecotone_Belowground,5.8,5.797,163
 TS_Ecotone,2007-03-01,Aboveground,TS_Ecotone_Aboveground,8.75,8.75,263.333
 TS_Ecotone,2007-03-01,Belowground,TS_Ecotone_Belowground,7.77,7.773,246
 TS_Ecotone,2008-03-01,Aboveground,TS_Ecotone_Aboveground,8.49,8.49,325.667
@@ -99,6 +99,8 @@ TS_Ecotone,2022-04-01,Aboveground,TS_Ecotone_Aboveground,6.97,6.973,171.58
 TS_Ecotone,2022-04-01,Belowground,TS_Ecotone_Belowground,8.55,8.553,192.794
 TS_Ecotone,2023-04-01,Aboveground,TS_Ecotone_Aboveground,9.28,9.277,246.873
 TS_Ecotone,2023-04-01,Belowground,TS_Ecotone_Belowground,8.61,8.607,354.968
+TS_Ecotone,2024-03-01,Aboveground,TS_Ecotone_Aboveground,7.83,7.833,262.492
+TS_Ecotone,2024-03-01,Belowground,TS_Ecotone_Belowground,6.13,6.133,305.607
 TS_Marsh,2002-03-01,Aboveground,TS_Marsh_Aboveground,7.43,7.429,253.134
 TS_Marsh,2002-03-01,Belowground,TS_Marsh_Belowground,6.69,6.691,171.321
 TS_Marsh,2003-03-01,Aboveground,TS_Marsh_Aboveground,9.46,9.462,292.778
@@ -147,3 +149,5 @@ TS_Marsh,2022-03-01,Aboveground,TS_Marsh_Aboveground,7.38,7.381,258.697
 TS_Marsh,2022-03-01,Belowground,TS_Marsh_Belowground,6.84,6.837,245.123
 TS_Marsh,2023-03-01,Aboveground,TS_Marsh_Aboveground,10.33,10.326,245.649
 TS_Marsh,2023-03-01,Belowground,TS_Marsh_Belowground,8.56,8.561,230.478
+TS_Marsh,2024-03-01,Aboveground,TS_Marsh_Aboveground,6.32,6.317,204.753
+TS_Marsh,2024-03-01,Belowground,TS_Marsh_Belowground,6.97,6.969,268.959
