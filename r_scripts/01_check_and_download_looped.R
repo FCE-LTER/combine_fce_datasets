@@ -6,7 +6,7 @@ library(purrr)
 # library(keyring) load if adding or loading an API Key outside of GitHub Actions
 
 # Load API key from GitHub Secrets
-Sys.setenv(EDI_API_KEY = Sys.getenv("API_KEY_READ_FROM_EDI"))
+login(key = Sys.getenv("API_KEY_READ_FROM_EDI"))
 
 # See below if running script locally, rather than in GitHub Actions, 
 
