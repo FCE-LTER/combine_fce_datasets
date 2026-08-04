@@ -3,9 +3,31 @@ library(readr)
 library(EDIutils)
 library(dplyr)
 library(purrr)
+# library(keyring) load if adding or loading an API Key outside of GitHub Actions
 
-Sys.setenv(EDI_API_KEY = Sys.getenv("EDI_API_KEY"))
+# Load API key from GitHub Secrets
+Sys.setenv(EDI_API_KEY = Sys.getenv("API_KEY_READ_FROM_EDI"))
 
+# See below if running script locally, rather than in GitHub Actions, 
+
+#### Create API key and load it into desktop system environment####
+
+# Note: See the following link to learn how to learn about EDI's
+# The Identity and Access Manager and how to create an EDI API key:
+# https://edirepository.org/resources/iam
+
+# If you created an API key you can save it on your local computer's credential
+# storage by running the commented out code below. You should only need to run
+# these three lines once per user/per computer
+# key_set(service = "edi",
+#        username = "edi_read_api_key",
+#        keyring = "my_keyring")
+
+# Sys.setenv(EDI_API_KEY = key_get(service = "edi", 
+#                                  username = "edi_im_read_api_key",
+#                                  keyring = "httr"))
+
+# Read in local list of packages of interest
 fce_package_list <- read_csv("data/raw/package_list.csv")
 
 # Get current list of packageids in EDI 
