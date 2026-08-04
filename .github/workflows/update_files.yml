@@ -35,6 +35,8 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Retrieve data from EDI
+        env:
+          EDI_SECRET_KEY: ${{ secrets.EDI_SECRET_KEY }} # Maps your GitHub secret to an env variable
         run: Rscript -e 'source("r_scripts/01_check_and_download_looped.R")'
       
       - name: Combine and plot

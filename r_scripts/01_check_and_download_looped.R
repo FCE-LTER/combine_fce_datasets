@@ -4,6 +4,8 @@ library(EDIutils)
 library(dplyr)
 library(purrr)
 
+Sys.setenv(EDI_API_KEY = Sys.getenv("EDI_API_KEY"))
+
 fce_package_list <- read_csv("data/raw/package_list.csv")
 
 # Get current list of packageids in EDI 
