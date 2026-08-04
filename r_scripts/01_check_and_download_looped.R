@@ -10,22 +10,32 @@ login(key = Sys.getenv("API_KEY_READ_FROM_EDI"))
 
 # See below if running script locally, rather than in GitHub Actions, 
 
-#### Create API key and load it into desktop system environment####
+#### Create API key and load it into system environment ####
 
-# Note: See the following link to learn how to learn about EDI's
-# The Identity and Access Manager and how to create an EDI API key:
+# Note: See the following link to learn about EDI's
+# Identity and Access Manager and how to create an EDI API key:
 # https://edirepository.org/resources/iam
 
-# If you created an API key you can save it on your local computer's credential
-# storage by running the commented out code below. You should only need to run
-# these three lines once per user/per computer
+# If you created an API key, you can save it on your local computer's credential
+# storage by running the commented out code below. You should only need to run these
+# lines once per user/per computer as long as the API key is current
+#
+## First create a keyring, you will be prompted to create a password for the keyring.
+## Save the keyring password somewhere safe.
+#keyring_create(keyring = "my_keyring")
+#
+## Add the API Key. You will be prompted to enter the API as a password
 # key_set(service = "edi",
-#        username = "edi_read_api_key",
+#        username = "edi_im_read_api_key",
 #        keyring = "my_keyring")
-
-# Sys.setenv(EDI_API_KEY = key_get(service = "edi", 
-#                                  username = "edi_im_read_api_key",
-#                                  keyring = "httr"))
+#
+## Login with the API key
+# login(key = key_get(service = "edi",
+#                     username = "edi_im_read_api_key",
+#                     keyring = "my_keyring"))
+#
+## Relock the key
+#keyring_lock("my_keyring")
 
 # Read in local list of packages of interest
 fce_package_list <- read_csv("data/raw/package_list.csv")
